@@ -1,15 +1,11 @@
 (function () {
-  document.querySelectorAll("img.logo").forEach((img) => {
-    if (window.CLANKER_LOGO) img.src = window.CLANKER_LOGO;
-  });
-
   const videos = window.CLANKER_VIDEOS || [];
   const grid = document.getElementById("grid");
   const search = document.getElementById("search");
   const tagRow = document.getElementById("tags");
   const modal = document.getElementById("modal");
   const embed = document.getElementById("embed");
-  const openLink = document.getElementById("openLink");
+  const modalTitle = document.getElementById("modalTitle");
   const countEl = document.getElementById("count");
 
   const allTags = [...new Set(videos.flatMap((v) => v.tags || []))].sort();
@@ -17,12 +13,6 @@
 
   function embedUrl(id) {
     return "https://www.redgifs.com/ifr/" + id;
-  }
-  function watchUrl(id) {
-    return "https://www.redgifs.com/watch/" + id;
-  }
-  function pretty(id) {
-    return id.replace(/([a-z])([A-Z])/g, "$1 $2");
   }
 
   allTags.forEach((tag) => {
@@ -42,7 +32,7 @@
   function filtered() {
     const q = (search.value || "").toLowerCase().trim();
     return videos.filter((v) => {
-      const hay = (v.id + " " + (v.tags || []).join(" ")).toLowerCase();
+      const hay = ((v.title || "") + " " + (v.tags || []).join(" ")).toLowerCase();
       const tagOk = !activeTag || (v.tags || []).includes(activeTag);
       return tagOk && (!q || hay.includes(q));
     });
@@ -53,26 +43,36 @@
     grid.innerHTML = "";
     countEl.textContent = list.length + " clip" + (list.length === 1 ? "" : "s");
     if (!list.length) {
-      grid.innerHTML = '<div class="empty">Nothing matches. Drop a new id into videos.js and try again.</div>';
+      grid.innerHTML = '<div class="empty">Nothing matches.</div>';
       return;
     }
     list.forEach((v) => {
       const card = document.createElement("article");
       card.className = "card";
-      card.innerHTML =
-        '<div class="thumb" style="background-image:url(\'' + (v.poster || "") + "')\"></div>" +
-        '<div class="card-body"><h3>' + pretty(v.id) + "</h3>" +
+      const img = document.createElement("img");
+      img.className = "thumb-img";
+      img.src = v.poster;
+      img.alt = v.title;
+      img.onerror = function () {
+        if (v.posterRemote && img.src !== v.posterRemote) img.src = v.posterRemote;
+      };
+      const body = document.createElement("div");
+      body.className = "card-body";
+      body.innerHTML =
+        "<h3>" + v.title + "</h3>" +
         '<div class="pills">' +
         (v.tags || []).map((t) => '<span class="pill">' + t + "</span>").join("") +
-        "</div></div>";
+        "</div>";
+      card.appendChild(img);
+      card.appendChild(body);
       card.addEventListener("click", () => openModal(v));
       grid.appendChild(card);
     });
   }
 
   function openModal(v) {
+    modalTitle.textContent = v.title;
     embed.src = embedUrl(v.id);
-    openLink.href = watchUrl(v.id);
     modal.classList.add("open");
   }
   function closeModal() {
