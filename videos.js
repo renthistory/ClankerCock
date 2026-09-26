@@ -71,29 +71,37 @@ window.CLANKER_VIDEOS = [
   },
   {
     id: "regaltalkativepolecat",
-    title: "Remote on Dad",
-    tags: ["Dad", "Family", "Control"],
+    title: "Futuristic Fun with Dad — Part 1: The Remote",
+    series: "Futuristic Fun with Dad",
+    part: 1,
+    tags: ["Dad", "Family", "Control", "Series"],
     poster: "posters/RegalTalkativePolecat.jpg",
     posterRemote: "https://media.redgifs.com/RegalTalkativePolecat-mobile.jpg"
   },
   {
     id: "thirdathleticcaiman",
-    title: "Freeze Frame",
-    tags: ["Dad", "Family", "Control"],
+    title: "Futuristic Fun with Dad — Part 2: Freeze Frame",
+    series: "Futuristic Fun with Dad",
+    part: 2,
+    tags: ["Dad", "Family", "Control", "Series"],
     poster: "posters/ThirdAthleticCaiman.jpg",
     posterRemote: "https://media.redgifs.com/ThirdAthleticCaiman-mobile.jpg"
   },
   {
     id: "moralfatalredtailedhawk",
-    title: "Dad on His Phone",
-    tags: ["Dad", "Family"],
+    title: "Futuristic Fun with Dad — Part 3: Dad on His Phone",
+    series: "Futuristic Fun with Dad",
+    part: 3,
+    tags: ["Dad", "Family", "Control", "Series"],
     poster: "posters/MoralFatalRedtailedhawk.jpg",
     posterRemote: "https://media.redgifs.com/MoralFatalRedtailedhawk-mobile.jpg"
   },
   {
     id: "creepybisexualgermanshorthairedpointer",
-    title: "Dad Reading, Unaware",
-    tags: ["Dad", "Family"],
+    title: "Futuristic Fun with Dad — Part 4: Dad Reading, Unaware",
+    series: "Futuristic Fun with Dad",
+    part: 4,
+    tags: ["Dad", "Family", "Control", "Series"],
     poster: "posters/CreepyBisexualGermanshorthairedpointer.jpg",
     posterRemote: "https://media.redgifs.com/CreepyBisexualGermanshorthairedpointer-mobile.jpg"
   }
