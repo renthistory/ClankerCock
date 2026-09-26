@@ -76,7 +76,6 @@ header {
   filter: drop-shadow(0 8px 18px rgba(0,0,0,.55));
 }
 .meta { color: var(--muted); font-size: 13px; text-align: right; }
-.meta a { color: var(--blue); text-decoration: none; }
 
 .toolbar {
   max-width: 1180px;
@@ -125,21 +124,13 @@ header {
   overflow: hidden;
   cursor: pointer;
 }
-.thumb {
-  aspect-ratio: 16 / 11;
-  background: #0b0b0e center/cover no-repeat;
-  position: relative;
-}
-.thumb::after {
-  content: "\25B6";
-  position: absolute;
-  inset: auto 12px 12px auto;
-  width: 36px; height: 36px;
-  border-radius: 50%;
-  display: grid; place-items: center;
-  background: rgba(0,0,0,.62);
-  color: var(--yellow);
-  font-size: 14px;
+.thumb-img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center top;
+  background: #0b0b0e;
 }
 .card-body { padding: 11px 12px 14px; }
 .card-body h3 {
@@ -182,7 +173,7 @@ header {
   padding: 10px 14px;
   gap: 10px;
 }
-.modal-bar a { color: var(--blue); font-size: 13px; }
+#modalTitle { color: var(--ink); font-size: 14px; font-weight: 600; }
 .embed-wrap {
   position: relative;
   width: 100%;
